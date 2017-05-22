@@ -88,7 +88,7 @@ class LocalCacheTest(unittest.TestCase):
         threads = []
         for i in range(0, total, int(batch_size / 2)):
             thread = threading.Thread(target=self.__cache_numbers,
-                                      args=(cache, range(i, i + batch_size if i + batch_size <= total else total))
+                                      args=(cache, list(range(i, i + batch_size if i + batch_size <= total else total)))
                                       )
             threads.append(thread)
         [t.start() for t in threads]
